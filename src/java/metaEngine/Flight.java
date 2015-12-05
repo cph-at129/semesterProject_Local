@@ -6,7 +6,7 @@ public class Flight {
     
     //holds the flight information
     private String airline;
-    private Date flightDate;
+    private String flightDate;
     private int numberOfSeats;
     private double totalPrice;
     
@@ -16,7 +16,7 @@ public class Flight {
     private String destination;//IATA - code
     private String origin;//IATA-code
 
-    public Flight(String airline, Date flightDate, int numberOfSeats, double totalPrice, String flightId, int travelTime, String destination, String origin) {
+    public Flight(String airline, String flightDate, int numberOfSeats, double totalPrice, String flightId, int travelTime, String destination, String origin) {
         this.airline = airline;
         this.flightDate = flightDate;
         this.numberOfSeats = numberOfSeats;
@@ -35,11 +35,11 @@ public class Flight {
         this.airline = airline;
     }
 
-    public Date getFlightDate() {
+    public String getFlightDate() {
         return flightDate;
     }
 
-    public void setFlightDate(Date flightDate) {
+    public void setFlightDate(String flightDate) {
         this.flightDate = flightDate;
     }
 

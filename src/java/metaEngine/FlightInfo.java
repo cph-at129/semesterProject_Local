@@ -6,16 +6,16 @@ public class FlightInfo {
     
     private String origin;
     private String destination;
-    private Date flightDate;
+    private String flightDate;
     private int numOfTickets;
 
-    public FlightInfo(String origin, Date flightDate, int numOfTickets) {
+    public FlightInfo(String origin, String flightDate, int numOfTickets) {
         this.origin = origin;
         this.flightDate = flightDate;
         this.numOfTickets = numOfTickets;
     }
 
-    public FlightInfo(String origin, String destination, Date flightDate, int numOfTickets) {
+    public FlightInfo(String origin, String destination, String flightDate, int numOfTickets) {
         this.origin = origin;
         this.destination = destination;
         this.flightDate = flightDate;
@@ -30,7 +30,7 @@ public class FlightInfo {
         return destination;
     }
 
-    public Date getFlightDate() {
+    public String getFlightDate() {
         return flightDate;
     }
 

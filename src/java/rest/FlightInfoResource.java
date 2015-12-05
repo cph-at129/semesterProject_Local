@@ -5,13 +5,13 @@ import com.google.gson.GsonBuilder;
 import deploy.DeploymentConfiguration;
 import facades.FlightFacade;
 import facades.FlightFacadeInterface;
-import java.util.Date;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.PathParam;
@@ -26,48 +26,72 @@ public class FlightInfoResource {
 
     @Context
     private UriInfo context;
-    
+
     private FlightFacadeInterface flightFacade;
     private EntityManagerFactory emf;
     private static Gson gson;
 
     public FlightInfoResource() {
-        
+
         emf = Persistence.createEntityManagerFactory(DeploymentConfiguration.PU_NAME);
         flightFacade = new FlightFacade(emf);
-        gson = new GsonBuilder().setPrettyPrinting().create();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").
+                setPrettyPrinting().create();
     }
 
     @GET
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("{from}/{to}/{date}/{numTickets}")
+    @Path("{from}/{date}/{numTickets}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllFlightsFrom(
             @PathParam("from") String from,
             @PathParam("date") String date,
-            @PathParam("numTickets") int numTickets) {
+            @PathParam("numTickets") int numTickets) throws ParseException {
 
+       //encapsulate the flightinfo parameters
+        FlightInfo flightInfo = new FlightInfo(from, date, numTickets);
+
+        List<Flight> demoflights = new ArrayList();
         
-        //List<Flight> flights = flightFacade.getAllFlightsFrom(from, date, numTickets);
-        return Response.ok().build();
+        demoflights.add(new Flight("AirlineTest", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        demoflights.add(new Flight("AirlineTest1", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        demoflights.add(new Flight("AirlineTest2", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        demoflights.add(new Flight("AirlineTest3", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        demoflights.add(new Flight("AirlineTest4", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        demoflights.add(new Flight("AirlineTest5", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        demoflights.add(new Flight("AirlineTest6", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        
+        //pass the flight info to the facade
+        //List<Flight> flights = flightFacade.getAllFlightsFromTo(flightInfo);
+
+        return Response.ok(gson.toJson(demoflights)).build();
     }
+
     @GET
-    @Consumes(MediaType.APPLICATION_JSON)
     @Path("{from}/{to}/{date}/{numTickets}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllFlightsFromTo(
             @PathParam("from") String from,
             @PathParam("to") String to,
             @PathParam("date") String date,
-            @PathParam("numTickets") int numTickets) {
+            @PathParam("numTickets") int numTickets) throws ParseException {
 
-        //1) convert the String date into a Java date (new Date())
-        Date flightDate = new Date();
+
+        //encapsulate the flightinfo parameters
+        FlightInfo flightInfo = new FlightInfo(from, to, date, numTickets);
+
+        List<Flight> demoflights = new ArrayList();
         
+        demoflights.add(new Flight("AirlineTest", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        demoflights.add(new Flight("AirlineTest1", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        demoflights.add(new Flight("AirlineTest2", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        demoflights.add(new Flight("AirlineTest3", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        demoflights.add(new Flight("AirlineTest4", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        demoflights.add(new Flight("AirlineTest5", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+        demoflights.add(new Flight("AirlineTest6", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
         
-        FlightInfo flightInfo = new FlightInfo(from, to, flightDate, numTickets);
-        
-        List<Flight> flights = flightFacade.getAllFlightsFromTo(flightInfo);
-        return Response.ok().build();
+        //pass the flight info to the facade
+        //List<Flight> flights = flightFacade.getAllFlightsFromTo(flightInfo);
+
+        return Response.ok(gson.toJson(demoflights)).build();
     }
 }
