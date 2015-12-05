@@ -1,0 +1,108 @@
+
+<div class="panel panel-default" id="bg" style="border-radius: 20px 20px 20px">
+
+    <div class="panel-body" id="search">
+
+
+        <form class="form-horizontal">
+            <div class="form-horizontal">
+                <fieldset>
+                    <div class="form-group" id="searchGroup">
+                        <label class="col-sm-2 control-label" for="departureDate">Departure Date</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control transparent-input" id="departureDate" name="DepartureDate"  ng-model="depDate" placeholder="Required">
+                        </div>
+                    </div>
+                    <div class="form-group" id="searchOption">
+                        <label class="col-sm-2 control-label" for="flyFrom">Fly from</label>
+                        <div class="col-sm-6">
+                            <select id="flyFrom" name="flyFrom" ng-model="flyFrom" class="form-control">
+                                <option value="SXF"><font>Berlin</font></option>
+                                <option value="CPH"><font>Copenhagen</font></option>
+                                <option value="STN"><font>London</font></option>
+                                <option value="CDG"><font>Paris</font></option>
+                                <option value="BCN"><font>Barcelona</font></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="searchOption">
+                        <label class="col-sm-2 control-label" ng-model="flyTo" for="flyTo">Fly to</label>
+                        <div class="col-sm-6">
+                            <select id="flyTo" name="flyTo" class="form-control">
+                                <option value=""><font></font></option>
+                                <option value="SXF"><font>Berlin</font></option>
+                                <option value="CPH"><font>Copenhagen</font></option>
+                                <option value="STN"><font>London</font></option>
+                                <option value="CDG"><font>Paris</font></option>
+                                <option value="BCN"><font>Barcelona</font></option>
+                            </select>
+                        </div>      
+                    </div>
+                    <div class="form-group" id="countryGroup">
+                        <label class="col-sm-2 control-label" for="country">Seats</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control" id="numberOfSeats" name="numberOfSeats" ng-model="seats" placeholder="Required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+                        <div class="col-sm-6">
+                            <button type="button" ng-click="getAllFlightsFrom()" class="btn btn-success">
+                                <font>Search</font>
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+
+
+    </div>
+
+
+
+</div>
+
+<div class="panel panel-default" ng-repeat="flight in flights">
+
+    <div class="panel panel-heading">
+
+        <h3 class="panel-title"><strong>{{ flight.airline}}</strong></h3>
+
+    </div>
+
+    <div class="panel-body">
+        <table>
+            <tr>
+            <div class="col-sm-2">
+                {{ flight.flightDate}}
+            </div>
+            <div class="col-sm-2">
+                {{ flight.origin}}
+            </div>
+            <div class="col-sm-2">
+                {{ flight.destination}}
+            </div>
+            <div class="col-sm-2">
+                {{ flight.travelTime}} min
+            </div>
+            <div class="col-sm-2">
+                {{ flight.totalPrice}} eur
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-success">
+                    <font>Book Now</font>
+                </button>
+            </div>
+
+            <!--                <th>{{ flight.flightDate }}</th>
+                            <th>{{ flight.numberOfSeats }}</th>
+                            <th>{{ flight.totalPrice }}</th>
+                            <th>{{ flight.flightId }}</th>
+                            <th>{{ flight.travelTime }}</th>
+                            <th>{{ flight.destination }}</th>
+                            <th>{{ flight.origin }}</th>-->
+            </tr>
+        </table>
+    </div>
+</div>
