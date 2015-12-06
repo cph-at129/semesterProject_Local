@@ -1,27 +1,35 @@
+
 package facades;
 
 import entity.Airline;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-public class AirlineFacade implements AirlineFacadeInterface{
+public class AirlineFacade implements AirlineFacadeInterface
+{
 
     private EntityManagerFactory emf;
-    
-    public AirlineFacade(EntityManagerFactory emf) {
+
+    public AirlineFacade(EntityManagerFactory emf)
+    {
         this.emf = emf;
     }
-    
-     public EntityManager getEntityManager() {
+
+    public EntityManager getEntityManager()
+    {
         return emf.createEntityManager();
     }
-    
+
     @Override
-    public List<Airline> getAllAirlines() {
-        
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Airline> getAllAirlines()
+    {
+
+        List<Airline> testFlight = new ArrayList();
+        testFlight.add(new Airline("test", "http://angularairline-plaul.rhcloud.com/api"));
+        return testFlight;
     }
-    
+
 }
