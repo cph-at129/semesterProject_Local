@@ -46,6 +46,7 @@ public class MetaEngine implements FlightFacadeInterface
             //add the future from the scanner to the futures list
             futures.add(future);
         }
+        executor.shutdown();
 
         for (Future<List<Flight>> future : futures) {
 
