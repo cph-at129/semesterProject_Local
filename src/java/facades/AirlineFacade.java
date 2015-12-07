@@ -29,6 +29,8 @@ public class AirlineFacade implements AirlineFacadeInterface
 
         List<Airline> testFlight = new ArrayList();
         testFlight.add(new Airline("test", "http://angularairline-plaul.rhcloud.com/api"));
+        testFlight.add(new Airline("outsourcing", "http://sargardon-001-site1.atempurl.com/api"));
+        
         return testFlight;
     }
 

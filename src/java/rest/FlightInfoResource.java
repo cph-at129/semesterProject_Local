@@ -47,23 +47,32 @@ public class FlightInfoResource {
             @PathParam("date") String date,
             @PathParam("numTickets") int numTickets) throws ParseException {
 
-       //encapsulate the flightinfo parameters
+               //encapsulate the flightinfo parameters
+//        List<Flight> demoflights = new ArrayList();
+//        
+//        demoflights.add(new Flight("AirlineTest", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+//        demoflights.add(new Flight("AirlineTest1", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+//        demoflights.add(new Flight("AirlineTest2", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+//        demoflights.add(new Flight("AirlineTest3", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+//        demoflights.add(new Flight("AirlineTest4", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+//        demoflights.add(new Flight("AirlineTest5", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+//        demoflights.add(new Flight("AirlineTest6", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
         FlightInfo flightInfo = new FlightInfo(from, date, numTickets);
 
-        List<Flight> demoflights = new ArrayList();
-        
-        demoflights.add(new Flight("AirlineTest", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        demoflights.add(new Flight("AirlineTest1", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        demoflights.add(new Flight("AirlineTest2", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        demoflights.add(new Flight("AirlineTest3", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        demoflights.add(new Flight("AirlineTest4", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        demoflights.add(new Flight("AirlineTest5", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        demoflights.add(new Flight("AirlineTest6", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        
         //pass the flight info to the facade
-        //List<Flight> flights = flightFacade.getAllFlightsFromTo(flightInfo);
+        List<Flight> flights = flightFacade.getAllFlightsFromTo(flightInfo);
 
-        return Response.ok(gson.toJson(demoflights)).build();
+//        if (flights == null) {
+//            
+//            throw new FlightException("Fuck that shit! Where are the flights?!", 1);
+//
+//        } else if (flights.isEmpty()) {
+//
+//            throw new FlightException("Fuck that shit! Where are the flights?!", 1);
+//
+//        }
+//        
+        return Response.ok(gson.toJson(flights)).build();
     }
 
     @GET
@@ -79,19 +88,27 @@ public class FlightInfoResource {
         //encapsulate the flightinfo parameters
         FlightInfo flightInfo = new FlightInfo(from, to, date, numTickets);
 
-        List<Flight> demoflights = new ArrayList();
-        
-        demoflights.add(new Flight("AirlineTest", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        demoflights.add(new Flight("AirlineTest1", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        demoflights.add(new Flight("AirlineTest2", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        demoflights.add(new Flight("AirlineTest3", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        demoflights.add(new Flight("AirlineTest4", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        demoflights.add(new Flight("AirlineTest5", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        demoflights.add(new Flight("AirlineTest6", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
-        
+//        List<Flight> demoflights = new ArrayList();
+//        
+//        demoflights.add(new Flight("AirlineTest", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+//        demoflights.add(new Flight("AirlineTest1", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+//        demoflights.add(new Flight("AirlineTest2", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+//        demoflights.add(new Flight("AirlineTest3", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+//        demoflights.add(new Flight("AirlineTest4", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+//        demoflights.add(new Flight("AirlineTest5", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
+//        demoflights.add(new Flight("AirlineTest6", "2016-01-04T23:00:00.000Z", 20, 1111.20, "BUS1213213", 140, "BCN", "CPH"));
         //pass the flight info to the facade
-        //List<Flight> flights = flightFacade.getAllFlightsFromTo(flightInfo);
+        List<Flight> flights = flightFacade.getAllFlightsFromTo(flightInfo);
 
-        return Response.ok(gson.toJson(demoflights)).build();
+//        if (flights == null) {
+//            
+//            throw new FlightException("Fuck that shit! Where are the flights?!", 1);
+//
+//        } else if (flights.isEmpty()) {
+//
+//            throw new FlightException("Fuck that shit! Where are the flights?!", 1);
+//
+//        }
+        return Response.ok(gson.toJson(flights)).build();
     }
 }
